@@ -1,0 +1,64 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  height: 100px;
+}
+
+.logo {
+  position: absolute;
+  top: 200px; 
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: -60px;
+}
+
+.links1 {
+  position: absolute;
+  margin-left: 1250px;
+  margin-top: 20px;
+  display: flex;
+  gap: 10px; 
+}
+
+a {
+  text-decoration: none;
+  color: #5f6368;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+a:hover {
+  color: #4285f4;
+}
+
+.avatar, .googleapps {
+  position: absolute;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.avatar {
+  margin-left: 155px;
+  margin-top: -10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.avatar:hover, .googleapps:hover {
+  transform: scale(1.3);
+}
+
+.googleapps {
+  margin-left: 120px;
+  margin-top: -5px;
+  width: 30px;
+  height: 25px;
+}

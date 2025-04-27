@@ -1,0 +1,94 @@
+/* General */
+.resultadosContainer {
+  padding: 20px;
+  max-width: 950px;
+  margin: 50px auto;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 500;
+  color: #202124;
+  margin-bottom: 20px;
+}
+
+/* Título de los resultados */
+.resultadoTitle {
+  font-size: 22px;
+  font-weight: 400;
+  color: #1a73e8;
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+
+.resultadoTitle:hover {
+  text-decoration: underline;
+}
+
+/* Descripción de los resultados */
+.resultadoDescription {
+  font-size: 14px;
+  color: #70757a;
+  margin-bottom: 8px;
+}
+
+/* URL */
+.resultadoUrl {
+  font-size: 14px;
+  color: #1a0dab;
+  margin-bottom: 10px;
+}
+
+.resultadoUrl:hover {
+  text-decoration: underline;
+}
+
+/* Separador entre resultados */
+.resultadoSeparator {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #f1f3f4;
+  padding-bottom: 15px;
+}
+
+/* Paginación */
+.paginacion {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.paginacion a {
+  color: #1a0dab;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.paginacion a:hover {
+  text-decoration: underline;
+}
+
+.paginacion span {
+  color: #5f6368;
+  font-size: 14px;
+}
+
+/* Información de búsqueda */
+.informacionBusqueda {
+  margin-top: 40px;
+  color: #5f6368;
+  font-size: 14px;
+}
+
+.informacionBusqueda a {
+  color: #1a0dab;
+  text-decoration: none;
+}
+
+.informacionBusqueda a:hover {
+  text-decoration: underline;
+}
