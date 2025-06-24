@@ -3,48 +3,41 @@ import styles from "../styles/header.module.css";
 function Header() {
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>
-        <img
-          src="/DestinyLogoGoogle.jpeg"
-          alt="Logo Destiny Google"
-          style={{
-            width: '300px',
-            height: 'auto',
-          }}
-        />
-      </div>
 
-      <div className={styles.navContainer}>
+      <nav className={styles.navContainer}>
+        {/* Links si quieres activarlos más adelante */}
         <div className={styles.links}>
-          <a href="/">SobreDestiny </a>
-          <a href="/">Proyectos </a>
+          {/* <a href="/">SobreDestiny</a>
+              <a href="/">Proyectos</a> */}
         </div>
 
-        <div className={styles.links1}>
-          <a 
+        <div className={styles.linksRight}>
+          <a
             href="https://www.linkedin.com/in/destinycisternas"
             target="_blank"
             rel="noopener noreferrer"
-          > Linkedin
+          >
+            Linkedin
           </a>
           <a
             href="https://github.com/destinycisternas"
             target="_blank"
             rel="noopener noreferrer"
-          >GitHub
+          >
+            GitHub
           </a>
           <img
-            src="/public/googleapps.jpg"
-            alt="googleapps"
-            className={styles.googleapps}
+            src="/googleapps.jpg"
+            alt="Google Apps"
+            className={styles.icon}
           />
           <img
-            src="/public/destiny.jpg"
+            src="/destiny.jpg"
             alt="Avatar"
             className={styles.avatar}
           />
         </div>
-      </div>
+      </nav>
     </header>
   );
 }

@@ -1,0 +1,121 @@
+.container {
+  padding: 2rem 1.5rem;
+  max-width: 800px;
+  margin: 2rem auto;
+  background-color: rgba(247, 249, 252, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+}
+
+.description {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  color: #34495e;
+  max-width: 720px;
+  text-align: left;
+}
+
+.card {
+  background-color: white;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.15);
+  width: 100%;
+  max-width: 1000px;
+  text-align: center; /* subtítulos y contenido centrados */
+}
+
+.subtitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.techItem {
+  display: flex;
+  justify-content: center; /* centra horizontalmente */
+  align-items: center; /* centra verticalmente */
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  color: #1c3f72;
+  font-size: 1.1rem;
+}
+
+
+.techItem span:first-child {
+  min-width: 130px; /* para alinear textos */
+}
+
+.dots {
+  gap: 1px; /* menos espacio entre puntitos */
+}
+
+.dotFilled {
+  color: #3498db; 
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.dotEmpty {
+  color: #cbd5e1; /* gris claro para puntitos vacíos */
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.softSkills {
+  list-style: disc inside;
+  color: #34495e;
+  line-height: 1.5;
+  font-weight: 500;
+  text-align: left;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.softSkills li {
+  margin-bottom: 0.8rem;
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 520px;
+  margin-top: 2rem;
+}
+
+.button {
+  background-color: #3498db;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: #2980b9;
+}

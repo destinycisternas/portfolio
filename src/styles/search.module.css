@@ -7,6 +7,17 @@
   margin-top: 50px;
 }
 
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.logoImg {
+  max-width: 250px;
+  height: auto;
+}
+
 .inputContainer {
   position: relative;
   width: 50%;
@@ -26,7 +37,8 @@
   border-color: #4285f4;
 }
 
-.iconLeft, .rightIcons {
+.iconLeft,
+.rightIcons {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -44,7 +56,8 @@
   gap: 10px;
 }
 
-.iconRight, .iconImage{
+.iconRight,
+.iconImage {
   width: 20px;
   height: 20px;
   color: #9aa0a6;
@@ -61,6 +74,8 @@
   border: 1px solid #dcdcdc;
   cursor: pointer;
   font-size: 14px;
+  min-width: 140px; /* Agrego min-width para mejor control */
+  transition: background-color 0.2s ease;
 }
 
 .button:hover {
@@ -69,4 +84,40 @@
 
 .button:active {
   background-color: #e5e5e5;
+}
+
+/* Responsive Search */
+
+/* Tablets y pantallas medianas */
+@media (max-width: 1024px) {
+  .inputContainer {
+    width: 70%;
+  }
+}
+
+/* Móviles */
+@media (max-width: 480px) {
+  .inputContainer {
+    width: 90%;
+  }
+
+  .search {
+    padding: 8rem 1rem;
+  }
+
+  .buttonContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .button {
+    font-size: 13px;
+    padding: 8px 12px;
+    width: auto;         /* Evita que las buttons ocupen todo el ancho */
+    min-width: 120px;    /* Ancho mínimo para que se vean consistentes */
+    margin: 5px 8px;     /* Espaciado entre botones */
+  }
 }

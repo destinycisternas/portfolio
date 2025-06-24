@@ -1,5 +1,7 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useEffect } from "react";
+import { FaSearch, FaMicrophone, FaCamera } from "react-icons/fa";
+import styles from "../styles/Resultados.module.css";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -8,78 +10,229 @@ function useQuery() {
 function Resultados() {
   const query = useQuery();
   const navigate = useNavigate();
-  const q = query.get("q");
+  const q = query.get("q") || "";
+  const tipo = query.get("tipo") || "Todo";
 
-  // Función para volver a buscar
   const handleSearch = (e) => {
     e.preventDefault();
     const newQuery = e.target.elements.searchQuery.value;
-    navigate(`/resultados?q=${newQuery}`);
+    navigate(`/resultados?q=${newQuery}&tipo=${tipo}`);
   };
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const filtros = ["Todo", "Web", "Proyectos", "Experiencia", "Certificaciones"];
+
+  const Informacion = [
+    // Web
+    {
+      titulo: "GitHub - Destiny Cisternas",
+      url: "https://github.com/destinycisternas",
+      descripcion: "Repositorio personal con proyectos de desarrollo web.",
+      tipo: "Web",
+    },
+    {
+      titulo: "LinkedIn - Destiny Cisternas",
+      url: "https://linkedin.com/in/destinycisternas",
+      descripcion: "Perfil profesional con experiencia, estudios y conocimientos.",
+      tipo: "Web",
+    },
+
+    // Proyectos
+    {
+      titulo: "Netflix-Clone - Destiny Cisternas",
+      tecnologias: ["React", "Html", "CSS Modules", "Bootstrap"],
+      imgSrc: "/IconosProyectos/netflix-clone.png",
+      url: "https://github.com/destinycisternas/netflix-clone",
+      descripcion:
+        "Clon de Netflix que permite buscar  películas y series, con diseño responsivo y funcionalidades básicas de navegación.",
+      tipo: "Proyectos",
+    },
+    {
+      titulo: "Pokedex - Destiny Cisternas",
+      tecnologias: ["React", "Hooks", "Html", "Css", "JavaScript"],
+      imgSrc: "/IconosProyectos/netflix-clone.png",
+      url: "https://github.com/destinycisternas/pokedex-react",
+      descripcion:
+        "Aplicación que consume la API pública de Pokémon para mostrar información detallada de cada criatura, con filtros y paginación.",
+      tipo: "Proyectos",
+    },
+
+    // Certificaciones
+    {
+      titulo: "Diploma Scrum Master",
+      href: "/Certificaciones/diploma-scrum-master.pdf",
+      imgSrc: "/Certificaciones/iconos/icon-scrum-master.jpeg",
+      alt: "Diploma Scrum Master",
+      tipo: "Certificaciones",
+    },
+    {
+      titulo: "Diploma React Avanzado",
+      href: "/Certificaciones/diploma-react-avanzado.pdf",
+      imgSrc: "/Certificaciones/iconos/icon-react-avanzado.jpeg",
+      alt: "Diploma React Avanzado",
+      tipo: "Certificaciones",
+    },
+    {
+      titulo: "Coursera TypeScript",
+      href: "/Certificaciones/Coursera-LU0SERLZ1HR0.pdf",
+      imgSrc: "/Certificaciones/iconos/icon-coursera-typescript.jpeg",
+      alt: "Coursera TypeScript",
+      tipo: "Certificaciones",
+    },
+    {
+      titulo: "Diploma GitHub",
+      href: "/Certificaciones/diploma-gitgithub.pdf",
+      imgSrc: "/Certificaciones/iconos/icon-GitHub.jpeg",
+      alt: "Diploma GitHub",
+      tipo: "Certificaciones",
+    },
+    {
+      titulo: "Diploma Introducción AI",
+      href: "/Certificaciones/diploma-introduccion-ai.pdf",
+      imgSrc: "/Certificaciones/iconos/icon-Introduccion-AI.jpeg",
+      alt: "Diploma Introducción AI",
+      tipo: "Certificaciones",
+    },
+
+    // Experiencia
+    {
+      titulo: "Deliboo - Práctica Profesional",
+      empresa: "Deliboo",
+      puesto: "Práctica Profesional - Analista Programador",
+      duracion: "Abril 2024 - Junio 2024",
+      descripcion: `Análisis de requisitos funcionales y no funcionales, transformándolos en soluciones técnicas efectivas.
+      Participación en el desarrollo de aplicaciones internas...
+      Soporte y mantenimiento de sistemas existentes...
+      Desarrollo de documentación técnica y guías de usuario...`,
+      href: "/experiencia",
+      imgSrc: "/deliboo.jpg",
+      alt: "Logo Deliboo",
+      tipo: "Experiencia",
+    },
+  ];
+
+  const InformacionFiltrada =
+    tipo === "Todo" ? Informacion : Informacion.filter((p) => p.tipo === tipo);
+
   return (
-    <div className="container mt-4">
-      {/* Barra de búsqueda superior */}
-      <form onSubmit={handleSearch} className="mb-4">
-        <div className="d-flex align-items-center gap-2">
+    <div className={styles.resultadosContainer}>
+      <div className={styles.topBar}>
+        <div className={styles.leftTop}>
+          <Link to="/">
+            <img src="/DestinyLogoGoogle.png" alt="Destiny" className={styles.logo} />
+          </Link>
+
+          <form onSubmit={handleSearch} className={styles.searchForm}>
+            <div className={styles.searchInput}>
+              <input
+                type="text"
+                name="searchQuery"
+                defaultValue={q}
+                className={styles.inputField}
+                autoFocus
+              />
+              <button type="button" className={styles.btnBuscar} aria-label="Buscar por voz">
+                <FaMicrophone />
+              </button>
+              <button type="button" className={styles.btnBuscar} aria-label="Buscar con cámara">
+                <FaCamera />
+              </button>
+              <button type="submit" className={styles.btnBuscar} aria-label="Buscar">
+                <FaSearch />
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div className={styles.rightTop}>
           <img
-            src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_92x30dp.png"
-            alt="Google Logo"
-            width={92}
-            height={30}
+            src="/googleapps.jpg"
+            alt="Google Apps"
+            className={styles.googleapps}
+            style={{ marginRight: "10px", cursor: "pointer" }}
           />
-          <input
-            type="text"
-            name="searchQuery"
-            defaultValue={q}
-            className="form-control"
-            style={{ maxWidth: 600 }}
-          />
-          <button type="submit" className="btn btn-outline-primary">
-            Buscar
+          <Link to="/">
+            <img src="/destiny.jpg" alt="Perfil" className={styles.avatar} />
+          </Link>
+        </div>
+      </div>
+
+      <div className={styles.filtrosContainer}>
+        {filtros.map((t) => (
+          <button
+            key={t}
+            onClick={() => navigate(`/resultados?q=${q}&tipo=${t}`)}
+            className={`${styles.filtroBtn} ${tipo === t ? styles.activo : ""}`}
+          >
+            {t}
           </button>
-        </div>
-      </form>
+        ))}
+      </div>
 
-      {/* Resultados simulados */}
-      <div style={{ maxWidth: "800px" }}>
-        <p className="text-muted mb-4">Aproximadamente 5 resultados (0.42 segundos)</p>
+      <p className={styles.informacionBusqueda}>
+        Aproximadamente {InformacionFiltrada.length} resultado(s)
+      </p>
 
-        <div className="mb-4">
-          <a href="https://github.com/destinycisternas" className="h5 text-primary d-block" target="_blank" rel="noreferrer">
-            GitHub - Destiny Cisternas
-          </a>
-          <p className="text-success mb-1">https://github.com/destinycisternas</p>
-          <p>Repositorio personal con proyectos de desarrollo web.</p>
-        </div>
+      {InformacionFiltrada.map((p, i) => (
+        <div key={i} className={styles.resultadoSeparator}>
+          {p.url && (
+            <div to={p.href} className={styles.ImagenProyecto}>
+              <img src={p.imgSrc} alt={p.alt} />
 
-        <div className="mb-4">
-          <a href="https://linkedin.com/in/destinycisternas" className="h5 text-primary d-block" target="_blank" rel="noreferrer">
-            LinkedIn - Destiny Cisternas
-          </a>
-          <p className="text-success mb-1">https://linkedin.com/in/destinycisternas</p>
-          <p>Perfil profesional con experiencia, estudios y conocimientos.</p>
-        </div>
+              <div className={styles.infoProyecto}>
+                <a href={p.url} className={styles.resultadoTitle} target="_blank" rel="noreferrer">
+                  {p.titulo}
+                </a>
 
-        <div className="mb-4">
-          <a href="#" className="h5 text-primary d-block">
-            Sobre mí – Portafolio Destiny
-          </a>
-          <p className="text-success mb-1">https://destiny.com/sobremi</p>
-          <p>Conoce quién soy, mis motivaciones y el camino en la tecnología.</p>
-        </div>
+                {p.tecnologias && (
+                  <div className={styles.tecnologias}>
+                    {p.tecnologias.map((tec, idx) => (
+                      <span key={idx} className={styles.tecnologiaChip}>
+                        {tec}
+                      </span>
+                    ))}
+                  </div>
+                )}
 
-        <div className="mb-4">
-          <a href="#" className="h5 text-primary d-block">
-            Proyectos – Portafolio Destiny
-          </a>
-          <p className="text-success mb-1">https://destiny.com/proyectos</p>
-          <p>Aplicaciones, sitios web, y soluciones creadas con pasión y lógica.</p>
+                <p className={styles.resultadoUrl}>{p.url}</p>
+                <p className={styles.resultadoDescription}>{p.descripcion}</p>
+              </div>
+            </div>
+          )}
+
+          {!p.url && p.href && p.tipo === "Experiencia" && (
+            <Link to={p.href} className={styles.resultadoCertificado}>
+              <img src={p.imgSrc} alt={p.alt} />
+              <div>
+                <h5 className={styles.resultadoTitle}>{p.titulo}</h5>
+                <p className={styles.resultadoUrl}>
+                  {p.empresa} — {p.duracion}
+                </p>
+                <p className={styles.resultadoDescription}>{p.descripcion}</p>
+              </div>
+            </Link>
+          )}
+
+          {!p.url && p.href && p.tipo === "Certificaciones" && (
+            <a href={p.href} className={styles.resultadoCertificado} target="_blank" rel="noreferrer">
+              <img src={p.imgSrc} alt={p.alt} />
+              <div>
+                <h5 className={styles.resultadoTitle}>{p.titulo}</h5>
+                <p className={styles.resultadoUrl}>{p.href}</p>
+                <p className={styles.resultadoDescription}>Ver certificado</p>
+              </div>
+            </a>
+          )}
         </div>
+      ))}
+
+      <div className={styles.btnContainer}>
+        <Link to="/">
+          <button className={styles.btnVolver}>Ir a página principal</button>
+        </Link>
       </div>
     </div>
   );

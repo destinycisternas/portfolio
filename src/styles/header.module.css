@@ -1,30 +1,29 @@
 .header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  padding: 1rem 2rem;
-  height: 100px;
-}
-
-.logo {
-  position: absolute;
-  top: 200px; 
+  padding: 10px;
+  background-color: #fff;
+  box-sizing: border-box;
 }
 
 .navContainer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: -60px;
+  gap: 20px;
+  flex-grow: 1;
+  justify-content: flex-end;
 }
 
-.links1 {
-  position: absolute;
-  margin-left: 1250px;
-  margin-top: 20px;
+.links {
   display: flex;
-  gap: 10px; 
+  gap: 20px;
+}
+
+.linksRight {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 a {
@@ -32,33 +31,74 @@ a {
   color: #5f6368;
   font-weight: bold;
   font-size: 14px;
+  transition: color 0.3s ease;
 }
 
 a:hover {
   color: #4285f4;
 }
 
-.avatar, .googleapps {
-  position: absolute;
+.icon {
+  width: 30px;
+  height: 25px;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
 
 .avatar {
-  margin-left: 155px;
-  margin-top: -10px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-.avatar:hover, .googleapps:hover {
+.icon:hover,
+.avatar:hover {
   transform: scale(1.3);
 }
 
-.googleapps {
-  margin-left: 120px;
-  margin-top: -5px;
-  width: 30px;
-  height: 25px;
+/* Responsive */
+
+@media (max-width: 1024px) {
+  .header {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .logoImg {
+    width: 250px;
+    margin-bottom: 15px;
+  }
+
+  .navContainer {
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .linksRight {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logoImg {
+    width: 200px;
+  }
+
+  a {
+    font-size: 12px;
+  }
+
+  .avatar {
+    width: 35px;
+    height: 35px;
+  }
+
+  .icon {
+    width: 25px;
+    height: 20px;
+  }
 }

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "../styles/footer.module.css";
 
 function Footer() {
@@ -7,13 +8,13 @@ function Footer() {
 
       <div className={styles.bottomLinks}>
         <div className={styles.links2}>
-          <a href="/">¿Quién Soy?</a>
-          <a href="/">Experiencia</a>
-          <a href="/">Estudios</a>
+          <Link to="/quien-soy">¿Quién Soy?</Link>
+          <Link to="/experiencia">Experiencia</Link>
+          <Link to="/estudios">Estudios</Link>
         </div>
 
         <div className={styles.links3}>
-          <a href="/">Conocimientos</a>
+          <Link to="/conocimientos">Conocimientos</Link>
           <a
             href="/CURRICULUM 2025 ABRIL.pdf"
             download="CURRICULUM-DestinyCisternas.pdf"
