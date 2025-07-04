@@ -32,7 +32,7 @@ function Header() {
             className={styles.icon}
           />
           <img
-            src="/destiny.jpg"
+            src="/destiny_formal.jpeg"
             alt="Avatar"
             className={styles.avatar}
           />

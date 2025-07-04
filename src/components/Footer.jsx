@@ -10,17 +10,17 @@ function Footer() {
         <div className={styles.links2}>
           <Link to="/quien-soy">¿Quién Soy?</Link>
           <Link to="/experiencia">Experiencia</Link>
-          <Link to="/estudios">Estudios</Link>
         </div>
 
         <div className={styles.links3}>
+          <Link to="/estudios">Estudios</Link>
           <Link to="/conocimientos">Conocimientos</Link>
-          <a
+          {/*<a
             href="/CURRICULUM 2025 ABRIL.pdf"
             download="CURRICULUM-DestinyCisternas.pdf"
           >
             Curriculum
-          </a>
+          </a>*/}
         </div>
       </div>
     </footer>

@@ -2,6 +2,8 @@ import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { FaSearch, FaMicrophone, FaCamera } from "react-icons/fa";
 import styles from "../styles/Resultados.module.css";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -103,10 +105,7 @@ function Resultados() {
       empresa: "Deliboo",
       puesto: "Práctica Profesional - Analista Programador",
       duracion: "Abril 2024 - Junio 2024",
-      descripcion: `Análisis de requisitos funcionales y no funcionales, transformándolos en soluciones técnicas efectivas.
-      Participación en el desarrollo de aplicaciones internas...
-      Soporte y mantenimiento de sistemas existentes...
-      Desarrollo de documentación técnica y guías de usuario...`,
+      descripcion: `Participación en el análisis de requisitos para diseñar soluciones técnicas. Desarrollo y mantenimiento de aplicaciones internas. `,
       href: "/experiencia",
       imgSrc: "/deliboo.jpg",
       alt: "Logo Deliboo",
@@ -155,7 +154,7 @@ function Resultados() {
             style={{ marginRight: "10px", cursor: "pointer" }}
           />
           <Link to="/">
-            <img src="/destiny.jpg" alt="Perfil" className={styles.avatar} />
+            <img src="/destiny_formal.jpeg" alt="Perfil" className={styles.avatar} />
           </Link>
         </div>
       </div>
@@ -172,60 +171,73 @@ function Resultados() {
         ))}
       </div>
 
-      <p className={styles.informacionBusqueda}>
-        Aproximadamente {InformacionFiltrada.length} resultado(s)
-      </p>
-
-      {InformacionFiltrada.map((p, i) => (
-        <div key={i} className={styles.resultadoSeparator}>
-          {p.url && (
-            <div to={p.href} className={styles.ImagenProyecto}>
-              <img src={p.imgSrc} alt={p.alt} />
-
-              <div className={styles.infoProyecto}>
-                <a href={p.url} className={styles.resultadoTitle} target="_blank" rel="noreferrer">
-                  {p.titulo}
-                </a>
-
-                {p.tecnologias && (
-                  <div className={styles.tecnologias}>
-                    {p.tecnologias.map((tec, idx) => (
-                      <span key={idx} className={styles.tecnologiaChip}>
-                        {tec}
-                      </span>
-                    ))}
-                  </div>
-                )}
-
-                <p className={styles.resultadoUrl}>{p.url}</p>
-                <p className={styles.resultadoDescription}>{p.descripcion}</p>
-              </div>
+      {/* Web */}
+      {InformacionFiltrada.filter(p => p.tipo === "Web").map((p, i) => (
+        <div key={`web-${i}`} className={styles.resultadoSeparator}>
+          <a href={p.url} className={styles.resultadoWeb} target="_blank" rel="noreferrer">
+            <div className={styles.webIcon}>
+              {p.url.includes("github.com") && <FaGithub className={styles.githubIcon} />}
+              {p.url.includes("linkedin.com") && <FaLinkedin className={styles.linkedinIcon} />}
             </div>
-          )}
+            <div className={styles.webContent}>
+              <h5 className={styles.resultadoTitle}>{p.titulo}</h5>
+              <p className={styles.resultadoUrl}>{p.url}</p>
+              <p className={styles.resultadoDescription}>{p.descripcion}</p>
+            </div>
+          </a>
+        </div>
+      ))}
 
-          {!p.url && p.href && p.tipo === "Experiencia" && (
-            <Link to={p.href} className={styles.resultadoCertificado}>
-              <img src={p.imgSrc} alt={p.alt} />
-              <div>
-                <h5 className={styles.resultadoTitle}>{p.titulo}</h5>
-                <p className={styles.resultadoUrl}>
-                  {p.empresa} — {p.duracion}
-                </p>
-                <p className={styles.resultadoDescription}>{p.descripcion}</p>
-              </div>
-            </Link>
-          )}
+      {/* Proyectos */}
+      {InformacionFiltrada.filter(p => p.tipo === "Proyectos").map((p, i) => (
+        <div key={`proyecto-${i}`} className={styles.resultadoSeparator}>
+          <div className={styles.ImagenProyecto}>
+            <img src={p.imgSrc} alt={p.alt || p.titulo} />
+            <div className={styles.infoProyecto}>
+              <a href={p.url} className={styles.resultadoTitle} target="_blank" rel="noreferrer">
+                {p.titulo}
+              </a>
+              {p.tecnologias && (
+                <div className={styles.tecnologias}>
+                  {p.tecnologias.map((tec, idx) => (
+                    <span key={idx} className={styles.tecnologiaChip}>
+                      {tec}
+                    </span>
+                  ))}
+                </div>
+              )}
+              <p className={styles.resultadoUrl}>{p.url}</p>
+              <p className={styles.resultadoDescription}>{p.descripcion}</p>
+            </div>
+          </div>
+        </div>
+      ))}
 
-          {!p.url && p.href && p.tipo === "Certificaciones" && (
-            <a href={p.href} className={styles.resultadoCertificado} target="_blank" rel="noreferrer">
-              <img src={p.imgSrc} alt={p.alt} />
-              <div>
-                <h5 className={styles.resultadoTitle}>{p.titulo}</h5>
-                <p className={styles.resultadoUrl}>{p.href}</p>
-                <p className={styles.resultadoDescription}>Ver certificado</p>
-              </div>
-            </a>
-          )}
+      {/* Experiencia */}
+      {InformacionFiltrada.filter(p => p.tipo === "Experiencia").map((p, i) => (
+        <div key={`cert-${i}`} className={styles.resultadoSeparator}>
+          <a href={p.href} className={styles.ImagenProyecto} target="_blank" rel="noreferrer">
+            <img src={p.imgSrc} alt={p.alt} />
+            <div>
+              <h5 className={styles.resultadoTitle}>{p.titulo}</h5>
+              {/*<p className={styles.resultadoUrl}>{p.href}</p>*/}
+              <p className={styles.resultadoDescription}>{p.descripcion}</p>
+            </div>
+          </a>
+        </div>
+      ))}
+
+      {/* Certificaciones */}
+      {InformacionFiltrada.filter(p => p.tipo === "Certificaciones").map((p, i) => (
+        <div key={`cert-${i}`} className={styles.resultadoSeparator}>
+          <a href={p.href} className={styles.ImagenProyecto} target="_blank" rel="noreferrer">
+            <img src={p.imgSrc} alt={p.alt} />
+            <div>
+              <h5 className={styles.resultadoTitle}>{p.titulo}</h5>
+              <p className={styles.resultadoUrl}>{p.href}</p>
+              <p className={`${styles.resultadoDescription} ${styles.verCertificado}`}>Ver certificado</p>
+            </div>
+          </a>
         </div>
       ))}
 
