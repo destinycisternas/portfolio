@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from "../styles/search.module.css";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaMicrophone, FaCamera } from "react-icons/fa";
 
 function Search() {
   const [query, setQuery] = useState("");
@@ -57,16 +57,15 @@ function Search() {
           onClick={handleInputClick}
         />
         <div className={styles.rightIcons}>
-          <img
-            src="public/IconVoz.jpg"
-            alt="Voz"
-            className={styles.iconRight}
-          />
-          <img
-            src="public/IconImagen.jpg"
-            alt="Buscar por imagen"
-            className={styles.iconImage}
-          />
+          <button type="button" className={styles.btnBuscar} aria-label="Buscar por voz">
+            <FaMicrophone />
+          </button>
+          <button type="button" className={styles.btnBuscar} aria-label="Buscar con cámara">
+            <FaCamera />
+          </button>
+          <button type="submit" className={styles.btnBuscar} aria-label="Buscar">
+            <FaSearch />
+          </button>
         </div>
       </form>
 
