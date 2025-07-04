@@ -55,7 +55,7 @@ function Resultados() {
     {
       titulo: "Pokedex - Destiny Cisternas",
       tecnologias: ["React", "Hooks", "Html", "Css", "JavaScript"],
-      imgSrc: "/IconosProyectos/netflix-clone.png",
+      imgSrc: "/IconosProyectos/pokedex.jpeg",
       url: "https://github.com/destinycisternas/pokedex-react",
       descripcion:
         "Aplicación que consume la API pública de Pokémon para mostrar información detallada de cada criatura, con filtros y paginación.",
